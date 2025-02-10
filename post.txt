@@ -1,0 +1,12 @@
+For creating:
+1. git init
+2. git add README.md
+3. git commit -m "first commit"
+4. git branch -M main
+5. git remote add origin <Link>
+6. git push -u origin main
+
+For posting the files:
+1. git add .
+2. git push origin main
+3. git commit -m "message"
