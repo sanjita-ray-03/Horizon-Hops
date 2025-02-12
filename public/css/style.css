@@ -1,7 +1,15 @@
 .navbar{
-   height: 5rem; 
+   height: 5rem;
+   background-color: rgb(230, 230, 231); 
 }
 .logo{
     height: 55px;
     width: 118px;
+}
+.navbar-nav a{
+    font-size: 1.15rem;
+
+}
+.navbar-nav a:hover{
+    color: #041e46;
 }
