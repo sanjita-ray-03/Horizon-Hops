@@ -1,3 +1,4 @@
+/* --------------------------Navbar---------------------- */
 .navbar{
    height: 5rem;
    background-color: rgb(230, 230, 231); 
@@ -12,4 +13,71 @@
 }
 .navbar-nav a:hover{
     color: #041e46;
+}
+
+
+/* -----------------------Footer-------------------------- */
+.f-info-links a{
+    text-decoration: none;
+    color: rgb(26, 25, 25);
+}
+
+.f-info-links, .f-info-socials, .f-info-brand{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.f-info-links a:hover{
+    text-decoration: underline;
+}
+
+
+.f-info-socials i{
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+
+.f-info{
+    height: 8rem;
+    text-align: center;
+    background-color: rgb(230, 230, 231);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+}
+
+/* -------------------------Main page (Cards)------------------- */
+
+.card{
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-body{
+    padding: 0 !important;
+}
+.listing-link{
+    text-decoration: none;
+}
+
+.card-img-overlay{
+    opacity: 0;
+}
+
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: azure;
+}
+.card-img-overlay i{
+    opacity: 1;
 }
