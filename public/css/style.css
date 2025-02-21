@@ -1,7 +1,7 @@
 /* --------------------------Navbar---------------------- */
 .navbar{
    height: 5rem;
-   background-color: rgb(230, 230, 231); 
+   background-color: white; 
 }
 .logo{
     height: 55px;
@@ -80,4 +80,37 @@
 }
 .card-img-overlay i{
     opacity: 1;
+}
+
+/* button */
+.btn-primary{
+    background-color: #213553 !important;
+    border: none;
+    width: 120px;
+    height: 46px;
+}
+.btn-primary:hover{
+    background-color: #314c78 !important;
+}
+
+form label{
+    color: #213553;
+    font-size: 1.5rem;
+}
+
+/* -------------------------------Show page----------------------------------- */
+
+.show-img{
+    height: 30vh;
+}
+.btns{
+    display: flex;
+}
+.del{
+    border: none;
+    width: 120px;
+    height: 46px;
+}
+.del:hover{
+    background-color: #8c212c;
 }
