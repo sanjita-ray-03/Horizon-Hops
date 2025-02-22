@@ -27,9 +27,7 @@ app.use(methodOverride("_method"));
 app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
-app.get("/", (req, res) => {
-  res.send("Hi I am Root");
-});
+
 
 //Index Route
 app.get("/listings", async (req, res) => {
@@ -92,10 +90,9 @@ app.delete("/listings/:id", async (req, res) => {
 //   res.send("successful testing");
 // });
 
-//Middlewares
-
 
 
 app.listen(8080, () => {
   console.log("server is listening to port 8080");
 });
+
