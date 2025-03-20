@@ -1,0 +1,27 @@
+<% layout('layouts/boilerplate') -%>
+<body>
+    <div class="container">
+        <div class="row col-6 offset-4">
+            <div class="card mt-5" style="width: 30rem; margin-top:100px !important;margin-bottom:280px !important;">
+                <div class="card-body" style="text-align: center;">
+                  <h5 class="card-title mt-3">Please Verify your Email</h5>
+                  <h6 class="card-subtitle mb-2 text-body-secondary">we have sent otp to your email</h6>
+                  <p class="card-text">kindly fill the input section by otp</p>
+                  <form action="/verify" class="m-5" method="post">
+                    <div class="row d-flex mb-5" style="gap:10px; justify-content:center;">
+                        <input class="form-control form-control-lg" name="first" style="width: 3rem;" type="number"  aria-label=".form-control-lg example">
+                        <input class="form-control form-control-lg" name="sec" style="width: 3rem;" type="number"  aria-label=".form-control-lg example">
+                        <input class="form-control form-control-lg" name="third" style="width: 3rem;" type="number"  aria-label=".form-control-lg example">
+                        <input class="form-control form-control-lg" name="fourth" style="width: 3rem;" type="number"  aria-label=".form-control-lg example">
+                        <input class="form-control form-control-lg" name="fifth" style="width: 3rem;" type="number"  aria-label=".form-control-lg example">
+                        <img src="" alt="">
+                    </div>
+
+                  <button class="btn btn-primary px-5" style="background-color: #BF3880; color:white; border:none;" type="submit">Verify</button>
+                  </form>
+                 
+                </div>
+              </div>
+        </div>
+    </div>
+</body>
