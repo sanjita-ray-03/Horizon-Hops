@@ -7,7 +7,7 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const wrapasync = require("./utils/wrapasync.js");
 const ExpressError = require("./utils/ExpressError.js");
-
+const {listingchema} = require("./schema.js")
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/horizonHops";
 
@@ -30,7 +30,18 @@ app.use(methodOverride("_method"));
 app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
+const validatelisting=(req, res, next)=>{
+  let error = listingchema.validate(req.body);
+ 
+  if(error){
+    let errMsg = error.detalis.map((el)=> el.message).join(",");
+    throw new ExpressError(400,errMsg);
+  }
+  else{
+    next();
+  }
 
+};
 
 //Index Route
 app.get("/listings", wrapasync(  async (req, res) => {
@@ -51,10 +62,7 @@ app.get("/listings/:id", wrapasync( async (req, res) => {
 }));
 
 //Create Route
-app.post("/listings", wrapasync( async (req, res,next) => {
-  if(!req.body.listing){
-    throw new ExpressError(400, "Send valid data for listing");
-  }
+app.post("/listings",validatelisting, wrapasync( async (req, res,next) => {
   const newListing = new Listing(req.body.listing);
   await newListing.save();
   res.redirect("/listings");
@@ -62,19 +70,13 @@ app.post("/listings", wrapasync( async (req, res,next) => {
 
 //Edit Route
 app.get("/listings/:id/edit", wrapasync( async (req, res) => {
-  if(!req.body.listing){
-    throw new ExpressError(400, "Send valid data for listing");
-  }
   let { id } = req.params;
   const listing = await Listing.findById(id);
   res.render("listings/edit.ejs", { listing });
 }));
 
 //Update Route
-app.put("/listings/:id", wrapasync( async (req, res) => {
-  if(!req.body.listing){
-    throw new ExpressError(400, "Send valid data for listing");
-  }
+app.put("/listings/:id",validatelisting, wrapasync( async (req, res) => {
   let { id } = req.params;
   await Listing.findByIdAndUpdate(id, { ...req.body.listing });
   res.redirect(`/listings/${id}`);
@@ -109,7 +111,8 @@ app.all("*", (req, res, next)=>{
 //Middle Ware
 app.use((err, req, res, next )=>{
   let {statusCode=500 , message="Something Went Wrong"} = err;
-  res.status(statusCode).send(message);
+  res.status(statusCode).render("error.ejs",{message});
+  //res.status(statusCode).send(message);
 });
 
 
