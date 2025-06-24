@@ -3,11 +3,15 @@ const joi = require('joi');
 
 module.exports.listingSchema = joi.object({
     listing: joi.object({
-        titile: joi.string().required(),
-        Description: joi.string().required(),
+        title: joi.string().required(),
+        description: joi.string().required(),
         country: joi.string().required(),
+        location: joi.string().required(),
         price: joi.number().required().min(0),
-        image: joi.string().allow("", null),
+        image: joi.object({
+            url: joi.string().allow("", null),
+            filename: joi.string().allow("", null)
+        }) ,
     }).required()
 });
 
