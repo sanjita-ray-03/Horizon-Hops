@@ -8,7 +8,6 @@ const ExpressError = require("./utils/ExpressError.js");
 const { request } = require("http");
 const listings = require("./routes/listing.js");
 const reviews = require("./routes/review.js");
-
 const MONGO_URL = "mongodb://127.0.0.1:27017/horizonHops";
 
 main()
@@ -30,10 +29,8 @@ app.use(methodOverride("_method"));
 app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
-
 app.use("/listings",listings);
 app.use("/listings/:id/reviews", reviews);
-
 
 app.all("*", (req, res, next)=>{
   next(new ExpressError(404, "page not found!"));

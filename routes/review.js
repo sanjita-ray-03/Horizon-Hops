@@ -1,5 +1,5 @@
 const express = require("express");
-const router = express.Router();
+const router = express.Router({mergeParams: true});
 const wrapasync = require("../utils/wrapasync.js");
 const ExpressError = require("../utils/ExpressError.js");
 const {reviewSchema} = require("../schema.js");
@@ -9,7 +9,6 @@ const Listing = require("../models/listing.js");
 
 const validatereview=(req, res, next)=>{
   let { error } = reviewSchema.validate(req.body);
-  console.log(error);
   if(error){
     
     let errMsg = error.details.map((el)=> el.message).join(",");
